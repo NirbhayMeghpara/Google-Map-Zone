@@ -8,8 +8,6 @@ startJourneyButton.addEventListener('click', () => {
   pickUpInput.focus();
 });
 
-
-
 // Creating Google map
 
 let map, marker, directionsService, directionsRenderer, drawingManager, currentPolygon = null, autocompletePickUp
@@ -109,7 +107,6 @@ async function initMap() {
 
   })
 
-
   checkBtn.addEventListener('click', () => {
     if (currentPolygon) {
       if (google.maps.geometry.poly.containsLocation(marker.getPosition(), currentPolygon)) {
@@ -121,7 +118,4 @@ async function initMap() {
       alert('Please draw a polygon')
     }
   })
-
-
-
 }
