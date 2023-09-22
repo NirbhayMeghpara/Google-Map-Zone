@@ -1,10 +1,10 @@
 const pickUpInput = document.querySelector('#pickUp');
-const dropOffInput = document.querySelector('#dropOff');
 const searchBtn = document.querySelector('#search');
 const checkBtn = document.querySelector('#checkBtn');
 const startJourneyButton = document.querySelector('#startJourney');
 
 startJourneyButton.addEventListener('click', () => {
+  pickUpInput.value = ''
   pickUpInput.focus();
 });
 
@@ -20,7 +20,7 @@ async function initMap() {
     const myCoordinate = { lat: position.coords.latitude, lng: position.coords.longitude }
     const mapOptions = {
       center: myCoordinate,
-      zoom: 15,
+      zoom: 12,
       mapTypeId: 'roadmap'
     }
 
@@ -75,10 +75,8 @@ async function initMap() {
     });
   })
 
-
   // Create an Autocomplete instance with the input element
   autocompletePickUp = new google.maps.places.Autocomplete(pickUpInput);
-
 
   searchBtn.addEventListener('click', function () {
 
@@ -102,7 +100,7 @@ async function initMap() {
 
       // Center the map on the selected location
       map.setCenter(place.geometry.location);
-      map.setZoom(15);
+      map.setZoom(12);
     }
 
   })
@@ -112,7 +110,7 @@ async function initMap() {
       if (google.maps.geometry.poly.containsLocation(marker.getPosition(), currentPolygon)) {
         alert('Yes, Your entered location belongs to drawn zone.');
       }
-      else alert('Sorry! Entered location doesn’t belong to drawn zone.');
+      else alert('Sorry! Your location doesn’t belong to drawn zone.');
     }
     else {
       alert('Please draw a polygon')
